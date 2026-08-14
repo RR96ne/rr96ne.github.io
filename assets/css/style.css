@@ -837,6 +837,38 @@ footer{
 /* =========================================================
    Legal / plain content pages (privacy policy etc.)
    ========================================================= */
+.app-banner{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 22px auto 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
+}
+.app-banner .work-icon{
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.app-banner-kicker{
+  font-family: var(--font-pixel);
+  font-size: .5rem;
+  letter-spacing: .08em;
+  color: var(--ink-pink);
+  margin: 0 0 6px;
+}
+.app-banner-name{
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 5vw, 1.9rem);
+  letter-spacing: .05em;
+  color: var(--chrome-1);
+  margin: 0;
+  text-shadow: 0 0 20px rgba(0,255,242,.25);
+}
+
 .legal-body h1{
   font-size: 1.15rem;
   letter-spacing: .08em;
