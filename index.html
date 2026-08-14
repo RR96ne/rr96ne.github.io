@@ -1,43 +1,276 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>daboa</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>daboa（だぼあ） - Design Apps By One Amateur</title>
+<meta name="description" content="daboa（だぼあ）は一人の開発者による同人アプリ開発ブランドです。Webアプリ、Androidアプリ、OBS配信用ツール、TradingViewカスタムインジケータなどを制作しています。">
+<meta name="theme-color" content="#050308">
+<link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+
+<meta property="og:title" content="daboa（だぼあ） - Design Apps By One Amateur">
+<meta property="og:description" content="一人の開発者による同人アプリ開発ブランド daboa の作品紹介サイトです。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rr96ne.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-  <h1>daboa(だぼあ)</h1>
-  <p><strong>最終更新日: 2026年8月12日</strong></p>
-  <pre>
-daboa（だぼあ）は、一人の開発者による同人アプリ開発ブランドです。
 
-名前の由来にはいくつか裏設定がありますが、一番のお気に入りは "de boa" ——ポルトガル語で「大丈夫、気楽に」を意味する言葉。
+<div id="loader">
+  <div class="loader-logo">DABOA</div>
+  <div class="loader-bar"><span></span></div>
+  <div class="loader-text">NOW LOADING SITE.EXE ...</div>
+</div>
+
+<div class="bg-layer bg-grid"></div>
+<div class="bg-layer bg-stars"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>☆ WELCOME TO DABOA WORKS ☆</span>
+    <span class="hi">個人開発ブランド「だぼあ」公式サイトへようこそ</span>
+    <span>☆ Webアプリ / Androidアプリ / OBSツール / TradingViewインジケータ 制作中 ☆</span>
+    <span class="hi">最終更新日: 2026年8月14日</span>
+    <span>☆ Best viewed with curiosity ☆</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="logo-wrap">
+    <svg id="logoSvg" viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="chromeGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="18%" stop-color="#b9bbc9"/>
+          <stop offset="36%" stop-color="#f6f7fb"/>
+          <stop offset="52%" stop-color="#6c6c78"/>
+          <stop offset="68%" stop-color="#f6f7fb"/>
+          <stop offset="84%" stop-color="#9092a3"/>
+          <stop offset="100%" stop-color="#2a2a33"/>
+        </linearGradient>
+        <linearGradient id="neonGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#00fff2"/>
+          <stop offset="50%" stop-color="#ff2bd6"/>
+          <stop offset="100%" stop-color="#a259ff"/>
+        </linearGradient>
+        <filter id="logoGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="7" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="blur"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <text x="50%" y="66%" text-anchor="middle" class="chrome-text" font-size="104" fill="url(#neonGrad)" opacity="0.6" filter="url(#logoGlow)">daboa</text>
+      <text x="50%" y="66%" text-anchor="middle" class="chrome-text chrome-text-fill" font-size="104" fill="url(#chromeGrad)" stroke="#15121f" stroke-width="1.5">daboa</text>
+    </svg>
+  </div>
+  <p class="hero-sub">だぼあ ── <span class="accent">Design Apps By One Amateur</span></p>
+
+  <div class="badge-row">
+    <span class="badge blink">● NEW</span>
+    <span class="badge cyan">SINCE 20XX</span>
+    <span class="badge">個人開発</span>
+    <span class="badge pink">1024×768 対応不問</span>
+  </div>
+
+  <nav class="nav">
+    <a href="#about">ABOUT</a>
+    <a href="#webapps">WEB APPS</a>
+    <a href="#android">ANDROID</a>
+    <a href="#obs">OBS TOOLS</a>
+    <a href="#tradingview">TRADINGVIEW</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="section-head">
+      <span class="num">[ 01 ]</span>
+      <h2>ABOUT</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="hud-window">
+      <div class="hud-corners"><b></b></div>
+      <div class="win-titlebar">
+        <span class="win-title">
+          <svg viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" fill="#ff2bd6"/></svg>
+          about_daboa.exe
+        </span>
+        <span class="win-btns"><i></i><i></i><i></i></span>
+      </div>
+      <div class="win-body">
+        <p>daboa（だぼあ）は、一人の開発者による同人アプリ開発ブランドです。
+
+名前の由来にはいくつか裏設定がありますが、一番のお気に入りは "de boa" ── ポルトガル語で「大丈夫、気楽に」を意味する言葉。
 目立たないところでそっと物事を繋ぎ合わせ（ダボ継ぎのように）、使う人の毎日にやわらかく寄り添う。
-そうやって誰かの"だいじょうぶ"を少しずつ増やすアプリを、これからも一つずつつくっていきます。
-  </pre>
-  <hr/>
-  <pre>
-Design Apps By One Amateur
+そうやって誰かの"だいじょうぶ"を少しずつ増やすアプリを、これからも一つずつつくっていきます。</p>
+      </div>
+    </div>
+
+    <div class="hud-window" style="margin-top:24px;">
+      <div class="hud-corners"><b></b></div>
+      <div class="win-titlebar">
+        <span class="win-title">
+          <svg viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" fill="#00fff2"/></svg>
+          daboa.cfg
+        </span>
+        <span class="win-btns"><i></i><i></i><i></i></span>
+      </div>
+      <div class="win-body">
+        <p>Design Apps By One Amateur
 （一人のアマチュアによるアプリ設計）
 
-利益や効率に縛られる「プロ」の枠を超えて、純粋な情熱とこだわりでモノづくりと向き合う「Amateur（愛好家）」であり続けたい——そんな決意を込めたバクロニム（後付けの頭字語）です。
+利益や効率に縛られる「プロ」の枠を超えて、純粋な情熱とこだわりでモノづくりと向き合う「Amateur（愛好家）」であり続けたい ── そんな決意を込めたバクロニム（後付けの頭字語）です。
 
-一人だからこそ実現できる身軽なフットワークで、自分がおもしろいと思えるものを、自分のペースでかたちにしています。ご依頼をいただいた際も、興味を持てるものであれば、一品物として制作することがあります。
-  </pre>
+一人だからこそ実現できる身軽なフットワークで、自分がおもしろいと思えるものを、自分のペースでかたちにしています。ご依頼をいただいた際も、興味を持てるものであれば、一品物として制作することがあります。</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>制作物 - Webアプリ</h2>
-  <h3>Kalimba</h3>
-  <p>画面上で楽しめるカリンバです</p></p>
-  <ul>
-    <li><a href="https://rr96ne.github.io/kalimba-app/">こちらから演奏できます</a></li>
-  </ul>
-  
-  <h2>制作物 - Androidアプリ</h2>
-  <h3>SPACE VOYAGE</h3>
-  <p>レトロ風の縦スクロールゲームです</p>
-  <ul>
-    <li>ダウンロードサイト（改定中）</li>
-    <li><a href="./Android/SpaceVoyage/PrivacyPolicy.html">プライバシーポリシー</a></li>
-  </ul>
+  <section id="webapps">
+    <div class="section-head">
+      <span class="num">[ 02 ]</span>
+      <h2>WEB APPS</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="card-grid">
+      <div class="work-card">
+        <svg class="work-icon" viewBox="0 0 64 64">
+          <defs>
+            <linearGradient id="kalimbaG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#00fff2"/>
+              <stop offset="100%" stop-color="#a259ff"/>
+            </linearGradient>
+          </defs>
+          <rect x="8" y="24" width="48" height="24" rx="4" fill="none" stroke="url(#kalimbaG)" stroke-width="2.5"/>
+          <line x1="18" y1="24" x2="16" y2="8" stroke="url(#kalimbaG)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="27" y1="24" x2="26" y2="4" stroke="url(#kalimbaG)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="37" y1="24" x2="38" y2="4" stroke="url(#kalimbaG)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="46" y1="24" x2="48" y2="8" stroke="url(#kalimbaG)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="32" cy="38" r="3" fill="url(#kalimbaG)"/>
+        </svg>
+        <h3>Kalimba</h3>
+        <p>画面上で楽しめるカリンバです。マウスやタップでポロンと鳴らせます。</p>
+        <div class="tag-row">
+          <span class="tag">WEB APP</span>
+          <span class="tag">MUSIC</span>
+          <span class="tag">HTML5</span>
+        </div>
+        <div class="card-links">
+          <a class="btn-y2k" href="https://rr96ne.github.io/kalimba-app/" target="_blank" rel="noopener">▶ こちらから演奏する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="android">
+    <div class="section-head">
+      <span class="num">[ 03 ]</span>
+      <h2>ANDROID APPS</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="card-grid">
+      <div class="work-card">
+        <svg class="work-icon" viewBox="0 0 64 64">
+          <defs>
+            <linearGradient id="rocketG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ff2bd6"/>
+              <stop offset="100%" stop-color="#00baff"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4 C42 14 44 30 40 42 L24 42 C20 30 22 14 32 4 Z" fill="none" stroke="url(#rocketG)" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="32" cy="22" r="4" fill="none" stroke="url(#rocketG)" stroke-width="2"/>
+          <path d="M24 34 L14 44 L22 42" fill="none" stroke="url(#rocketG)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M40 34 L50 44 L42 42" fill="none" stroke="url(#rocketG)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M27 42 L26 54 L32 48 L38 54 L37 42" fill="none" stroke="url(#rocketG)" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <h3>SPACE VOYAGE</h3>
+        <p>レトロ風の縦スクロールシューティングゲームです。</p>
+        <div class="tag-row">
+          <span class="tag">ANDROID</span>
+          <span class="tag">GAME</span>
+          <span class="tag">RETRO</span>
+        </div>
+        <div class="card-links">
+          <span class="btn-y2k disabled">↓ ダウンロードサイト（改定中）</span>
+          <a class="btn-y2k ghost" href="./Android/SpaceVoyage/PrivacyPolicy.html">プライバシーポリシー</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="obs">
+    <div class="section-head">
+      <span class="num">[ 04 ]</span>
+      <h2>OBS TOOLS / BROWSER SOURCE</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="soon-card">
+      <div class="tape top">UNDER CONSTRUCTION</div>
+      <div class="soon-body">
+        <h3>COMING SOON</h3>
+        <p>配信を彩るOBS用サポートツール・ブラウザソースを準備中です。公開までしばらくお待ちください。</p>
+      </div>
+      <div class="tape bottom">UNDER CONSTRUCTION</div>
+    </div>
+  </section>
+
+  <section id="tradingview">
+    <div class="section-head">
+      <span class="num">[ 05 ]</span>
+      <h2>TRADINGVIEW INDICATORS</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="soon-card">
+      <div class="tape top">UNDER CONSTRUCTION</div>
+      <div class="soon-body">
+        <h3>COMING SOON</h3>
+        <p>TradingView用オリジナルカスタムインジケータを準備中です。公開までしばらくお待ちください。</p>
+      </div>
+      <div class="tape bottom">UNDER CONSTRUCTION</div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="counter-widget">
+    <span class="counter-label">ACCESS COUNTER</span>
+    <span class="counter-digits" id="counterDigits"><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></span>
+  </div>
+
+  <p class="contact-line">お問い合わせ: <a href="mailto:daboa.dev@gmail.com">daboa.dev@gmail.com</a></p>
+
+  <div class="footer-badges">
+    <span class="badge">HTML5</span>
+    <span class="badge">CSS3</span>
+    <span class="badge cyan">GitHub Pages</span>
+    <span class="badge pink">NO FRAMEWORK</span>
+  </div>
+
+  <p class="footer-note">Best viewed in any modern browser (but 1024×768 hits different) ／ Made with <span class="heart">♥</span> by daboa</p>
+  <p class="footer-note">© 2026 daboa. All rights reserved.</p>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="ページトップへ戻る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#15121f" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="./assets/js/main.js"></script>
 </body>
 </html>

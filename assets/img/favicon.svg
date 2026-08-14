@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="fchrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#00fff2"/>
+      <stop offset="100%" stop-color="#a259ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="10" fill="#0a0518"/>
+  <path d="M32 8 L44 20 L56 32 L44 44 L32 56 L20 44 L8 32 L20 20 Z" fill="url(#fchrome)" stroke="#ff2bd6" stroke-width="2"/>
+  <text x="32" y="40" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#0a0518" text-anchor="middle">d</text>
+</svg>
