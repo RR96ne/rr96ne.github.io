@@ -609,6 +609,18 @@ section{
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
 }
+.links-grid{
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.links-grid .work-card{
+  align-items: flex-start;
+  gap: 10px;
+}
+.links-grid .work-icon{
+  width: 44px;
+  height: 44px;
+}
+.links-grid p{ font-size: .82rem; }
 
 .work-card{
   position:relative;
