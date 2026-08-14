@@ -757,7 +757,13 @@ footer{
   background: #0a0616;
   border: 1px solid #5a5c72;
   padding: 8px 14px;
-  margin-bottom: 22px;
+  margin-bottom: 8px;
+}
+.counter-note{
+  font-size: .68rem;
+  color: var(--text-dim);
+  letter-spacing: .02em;
+  margin: 0 0 22px;
 }
 .counter-label{
   font-family: var(--font-pixel);
