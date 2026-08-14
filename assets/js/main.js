@@ -1,6 +1,17 @@
 (() => {
   "use strict";
 
+  /* ---------- site config: edit this one line when the site changes ---------- */
+  const LAST_UPDATED = "2026-08-14"; // YYYY-MM-DD
+
+  document.querySelectorAll(".last-updated").forEach((el) => {
+    const d = new Date(`${LAST_UPDATED}T00:00:00+09:00`);
+    el.textContent = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+  });
+  document.querySelectorAll(".cur-year").forEach((el) => {
+    el.textContent = String(new Date().getFullYear());
+  });
+
   /* ---------- theme switch (system / light / dark) ---------- */
   const THEME_KEY = "daboaTheme";
   const root = document.documentElement;
