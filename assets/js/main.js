@@ -1,6 +1,62 @@
 (() => {
   "use strict";
 
+  /* ---------- theme switch (system / light / dark) ---------- */
+  const THEME_KEY = "daboaTheme";
+  const root = document.documentElement;
+
+  const currentChoice = () => {
+    try {
+      const v = localStorage.getItem(THEME_KEY);
+      return v === "light" || v === "dark" ? v : "system";
+    } catch (e) {
+      return "system";
+    }
+  };
+
+  const applyTheme = (choice) => {
+    if (choice === "light" || choice === "dark") {
+      root.setAttribute("data-theme", choice);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+  };
+
+  const THEME_COLOR = { dark: "#050308", light: "#f3f0fb" };
+  const resolvedTheme = (choice) => {
+    if (choice === "light" || choice === "dark") return choice;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  };
+  const updateMetaColor = (choice) => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", THEME_COLOR[resolvedTheme(choice)]);
+  };
+  updateMetaColor(currentChoice());
+  window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => {
+    updateMetaColor(currentChoice());
+  });
+
+  const themeButtons = document.querySelectorAll(".theme-opt");
+  if (themeButtons.length) {
+    const syncButtons = (choice) => {
+      themeButtons.forEach((b) => {
+        b.setAttribute("aria-pressed", String(b.dataset.themeChoice === choice));
+      });
+    };
+    syncButtons(currentChoice());
+    themeButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const choice = btn.dataset.themeChoice;
+        try {
+          localStorage.setItem(THEME_KEY, choice);
+        } catch (e) {}
+        applyTheme(choice);
+        syncButtons(choice);
+        updateMetaColor(choice);
+      });
+    });
+  }
+
   /* ---------- loader ---------- */
   const loader = document.getElementById("loader");
   if (loader) {

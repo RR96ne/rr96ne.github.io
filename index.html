@@ -2,6 +2,16 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('daboaTheme');
+    if(t === 'light' || t === 'dark'){
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  }catch(e){}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>daboa（だぼあ） - Design Apps By One Amateur</title>
 <meta name="description" content="daboa（だぼあ）は一人の開発者による同人アプリ開発ブランドです。Webアプリ、Androidアプリ、OBS配信用ツール、TradingViewカスタムインジケータなどを制作しています。">
@@ -47,13 +57,13 @@
     <svg id="logoSvg" viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="chromeGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="18%" stop-color="#b9bbc9"/>
-          <stop offset="36%" stop-color="#f6f7fb"/>
-          <stop offset="52%" stop-color="#6c6c78"/>
-          <stop offset="68%" stop-color="#f6f7fb"/>
-          <stop offset="84%" stop-color="#9092a3"/>
-          <stop offset="100%" stop-color="#2a2a33"/>
+          <stop offset="0%" class="chrome-stop-1"/>
+          <stop offset="18%" class="chrome-stop-2"/>
+          <stop offset="36%" class="chrome-stop-1"/>
+          <stop offset="52%" class="chrome-stop-3"/>
+          <stop offset="68%" class="chrome-stop-1"/>
+          <stop offset="84%" class="chrome-stop-2"/>
+          <stop offset="100%" class="chrome-stop-4"/>
         </linearGradient>
         <linearGradient id="neonGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#00fff2"/>
@@ -73,6 +83,24 @@
     </svg>
   </div>
   <p class="hero-sub">だぼあ ── <span class="accent">Design Apps By One Amateur</span></p>
+
+  <div class="theme-switch" role="group" aria-label="テーマ切り替え">
+    <span class="theme-switch-label">THEME</span>
+    <div class="theme-switch-track">
+      <button type="button" class="theme-opt" data-theme-choice="system" aria-pressed="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg>
+        <span>AUTO</span>
+      </button>
+      <button type="button" class="theme-opt" data-theme-choice="light" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+        <span>LIGHT</span>
+      </button>
+      <button type="button" class="theme-opt" data-theme-choice="dark" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.7 6.7 0 0 0 10.5 10.5Z"/></svg>
+        <span>DARK</span>
+      </button>
+    </div>
+  </div>
 
   <div class="badge-row">
     <span class="badge blink">● NEW</span>
