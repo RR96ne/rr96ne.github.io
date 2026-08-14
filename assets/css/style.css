@@ -564,13 +564,24 @@ section{
 
 .section-head{
   display:flex;
+  flex-wrap: wrap;
   align-items:center;
   gap: 14px;
   margin-bottom: 22px;
 }
+.section-title{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+}
 .section-head h2{
-  font-size: 1.3rem;
-  letter-spacing: .12em;
+  font-size: clamp(0.8rem, 4.2vw, 1.3rem);
+  letter-spacing: .1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: linear-gradient(180deg, var(--chrome-1), var(--chrome-2) 60%, var(--chrome-4));
   -webkit-background-clip: text;
   background-clip: text;
@@ -581,9 +592,11 @@ section{
   font-family: var(--font-pixel);
   font-size: .6rem;
   color: var(--ink-pink);
+  flex-shrink: 0;
 }
 .section-line{
-  flex:1;
+  flex: 1 1 40px;
+  min-width: 40px;
   height: 2px;
   background: linear-gradient(90deg, var(--ink-cyan), var(--ink-purple), transparent);
 }
