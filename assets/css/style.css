@@ -623,6 +623,19 @@ section{
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
 }
+.work-card::before,
+.work-card::after{
+  content:"";
+  position:absolute;
+  width: 17px;
+  height: 17px;
+  background: linear-gradient(45deg, transparent calc(50% - 1.5px), var(--ink-cyan) 50%, transparent calc(50% + 1.5px));
+  filter: drop-shadow(0 0 3px var(--ink-cyan));
+  pointer-events:none;
+  z-index: 2;
+}
+.work-card::before{ top: -1px; right: -1px; }
+.work-card::after{ bottom: -1px; left: -1px; }
 .work-card:hover{
   transform: translateY(-4px);
   border-color: var(--ink-cyan);
