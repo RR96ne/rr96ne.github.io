@@ -1,0 +1,27 @@
+# Example Nginx server block for www.daboa.dev
+#
+# Copy to /etc/nginx/sites-available/daboa.dev on the VPS, adjust
+# `root` to match VPS_SITE_PATH used in .github/workflows/deploy.yml,
+# then:
+#
+#   sudo ln -s /etc/nginx/sites-available/daboa.dev /etc/nginx/sites-enabled/
+#   sudo nginx -t && sudo systemctl reload nginx
+#   sudo certbot --nginx -d daboa.dev -d www.daboa.dev
+#
+# certbot will rewrite this file to add the HTTPS server block and
+# the http -> https redirect automatically.
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name daboa.dev www.daboa.dev;
+
+    root /var/www/daboa.dev;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Privacy policy pages are static HTML under /Android/, no extra config needed.
+}

@@ -1,0 +1,53 @@
+name: Deploy to VPS
+
+# Push-to-deploy for the future www.daboa.dev VPS.
+#
+# Disabled by default: this job only runs when the repository
+# variable VPS_ENABLED is set to "true" (Settings > Secrets and
+# variables > Actions > Variables). Until then, this workflow is a
+# harmless no-op, so it's safe to keep on main before the VPS exists.
+#
+# Intentionally uses only the `ssh`/`ssh-keyscan` binaries preinstalled
+# on the ubuntu-latest runner instead of a third-party marketplace
+# action, so there's no external action version/tag to trust with
+# the deploy key.
+#
+# Triggers are push (requires write access to this repo) and
+# workflow_dispatch (same) only — never pull_request — so secrets are
+# never exposed to a workflow run driven by an external fork/PR.
+#
+# See README.md > "VPSデプロイ（将来 / www.daboa.dev）" for the full
+# setup checklist (server prep, SSH key, required secrets).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: ${{ vars.VPS_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH (git reset --hard on the VPS)
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_SITE_PATH: ${{ secrets.VPS_SITE_PATH }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          set -euo pipefail
+
+          umask 077
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # TOFU host key pinning. For stronger guarantees, replace this
+          # with a pre-verified host key stored as its own secret.
+          ssh-keyscan -p "$VPS_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          ssh -i ~/.ssh/deploy_key -p "$VPS_PORT" -o StrictHostKeyChecking=yes \
+            "$VPS_USER@$VPS_HOST" \
+            "cd '$VPS_SITE_PATH' && git fetch origin main && git reset --hard origin/main && git clean -fd"

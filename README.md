@@ -163,3 +163,33 @@ npx http-server .
 ## デプロイ
 
 `main`ブランチへのpushでGitHub Pagesに自動反映されます。反映まで数分かかる場合があります。
+
+## VPSデプロイ（将来 / www.daboa.dev）
+
+将来的に `www.daboa.dev` をVPSでホストする計画があります。そのための自動デプロイの雛形をあらかじめ用意しています。
+
+- `.github/workflows/deploy.yml`: `main`へのpush時にVPSへSSH接続し、サイトのディレクトリで`git fetch` → `git reset --hard origin/main` → `git clean -fd`を実行してリポジトリの内容をそのまま反映するワークフロー
+- `deploy/nginx.conf.example`: Nginxのサーバーブロック設定例（`certbot --nginx`でHTTPS化する前提）
+
+このワークフローは**リポジトリ変数 `VPS_ENABLED` が `"true"` のときだけ**動作します。VPSがまだ存在しない間はジョブごとスキップされる安全な状態なので、今のうちからmainに置いておけます。
+
+### VPSを用意したときの手順
+
+1. **VPS側の準備**
+   - Nginxをインストールし、サイト用ディレクトリ（例: `/var/www/daboa.dev`）にこのリポジトリを`git clone`しておく
+   - `deploy/nginx.conf.example`を参考にサーバーブロックを設置し、`certbot --nginx -d daboa.dev -d www.daboa.dev`でHTTPS化
+   - DNS側で`daboa.dev` / `www.daboa.dev`のAレコード（またはCNAME）をVPSに向ける
+   - デプロイ専用のSSHユーザーを作り、デプロイ用の鍵ペアを新規作成して公開鍵を`~/.ssh/authorized_keys`に登録
+2. **GitHub側の設定**（リポジトリの Settings > Secrets and variables > Actions）
+   - Secrets: `VPS_HOST`（VPSのIP/ホスト名）, `VPS_USER`（デプロイ用ユーザー名）, `VPS_SSH_KEY`（デプロイ用秘密鍵の中身）, `VPS_PORT`（通常22）, `VPS_SITE_PATH`（例: `/var/www/daboa.dev`）
+   - Variables: `VPS_ENABLED` を `true` に設定 → これで以降の`main`へのpushからVPSへの自動デプロイが有効になる
+3. 動作確認は `workflow_dispatch`（Actionsタブから手動実行）でも可能
+
+### セキュリティ上の注意
+
+- ワークフローはサードパーティ製Actionを使わず、GitHub提供のUbuntuランナーに標準搭載の`ssh`/`ssh-keyscan`のみで完結させています（外部Actionのタグ差し替えリスクを避けるため）
+- トリガーは`push`（書き込み権限者のみ）と`workflow_dispatch`（同）のみで、`pull_request`では起動しません。そのため外部からのフォーク/PRでこのワークフローや秘密情報が悪用されることはありません
+- 現状のホスト鍵検証はTOFU（`ssh-keyscan`で初回に取得した鍵をそのまま信頼）です。より厳密にしたい場合は、VPSの`ssh-keyscan`結果を事前に確認した上で`known_hosts`の中身自体をSecretとして保存し、ワークフロー側で`ssh-keyscan`の代わりにそれを書き込む形に変更してください
+- デプロイ用のSSH鍵は、他の用途に使い回さない専用のものを新規発行し、VPS側もデプロイ専用ユーザー（サイトディレクトリへの書き込み権限のみ）を使うことを推奨します
+
+GitHub Pages（`rr96ne.github.io`）とVPS（`www.daboa.dev`）は独立したホスティング先なので、並行運用してから切り替える・両方残す、どちらも可能です。ドメイン移行が確定したら、`index.html`の`og:url`など正規URLを記載している箇所も`https://www.daboa.dev/`に更新してください。
